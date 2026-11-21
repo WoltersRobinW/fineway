@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fineway: South African visas, worked out with you</title>
+<meta name="description" content="Retirement, work, family and in-country visas for South Africa. Free first consultation, clear fees, and a client portal that shows where your case stands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --mist:#EEF2F1;
+  --paper:#FFFFFF;
+  --wine:#2E151B;
+  --slate:#2F4454;
+  --teal:#376E6F;
+  --deep:#1C3334;
+  --rose:#DA7B93;
+  --rose-soft:#F6DDE4;
+  --line:#C9D6D4;
+  --serif:"Young Serif", Georgia, serif;
+  --sans:"Schibsted Grotesk", system-ui, sans-serif;
+  --wrap:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--mist);color:var(--wine);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em}
+p{margin:0}
+.skip{position:absolute;left:-999px;top:8px;background:var(--rose);color:var(--wine);padding:10px 14px;z-index:99}
+.skip:focus{left:8px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;font:600 16px/1 var(--sans);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.btn-rose{background:var(--rose);color:var(--wine)}
+.btn-rose:hover{background:#E596AA}
+.btn-ghost{border-color:currentColor;background:transparent;color:inherit}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.btn-wine{background:var(--wine);color:#fff}
+.btn-wine:hover{background:#4a2730}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:var(--deep);color:#fff}
+.top .wrap{display:flex;align-items:center;gap:28px;height:72px}
+.brand{display:flex;align-items:center;flex:none;text-decoration:none}
+.brand picture,.brand img{display:block}
+.nav{display:flex;gap:24px;margin-left:12px}
+.nav a{text-decoration:none;font-size:15px;color:#D6E3E1}
+.nav a:hover{color:#fff}
+.top-right{margin-left:auto;display:flex;align-items:center;gap:20px}
+.lang{display:flex;gap:2px;font-size:14px}
+.lang a{text-decoration:none;padding:4px 8px;border-radius:6px;color:#B9CCCA}
+.lang a[aria-current]{background:rgba(255,255,255,.12);color:#fff}
+.portal{font-size:15px;text-decoration:none;color:#fff;display:inline-flex;align-items:center;gap:8px}
+.portal:hover{text-decoration:underline}
+.top .btn{min-height:42px;font-size:15px;padding:0 18px}
+
+/* hero */
+.hero{background:var(--deep);color:#fff;padding:72px 0 96px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start;position:relative}
+.hero-route{position:absolute;inset:0;pointer-events:none}
+.hero h1{font-size:clamp(44px,5.6vw,76px);line-height:1.02;margin-top:8px;max-width:11ch}
+.promise{font-size:20px;line-height:1.5;color:#D6E3E1;margin-top:28px;max-width:30em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16);font-size:15px;color:#B9CCCA}
+.hero-facts strong{display:block;font-family:var(--serif);font-weight:400;font-size:26px;color:#fff;line-height:1.2}
+
+/* route finder */
+.finder{background:var(--mist);color:var(--wine);border-radius:28px;padding:32px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);position:relative}
+.finder-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.finder-title{font-family:var(--serif);font-size:24px}
+.finder-count{font-size:14px;color:var(--teal);font-weight:500;white-space:nowrap}
+.finder-bar{display:flex;gap:6px;margin:18px 0 26px}
+.finder-bar span{height:5px;flex:1;border-radius:3px;background:var(--line);transition:background .3s}
+.finder-bar span.on{background:var(--teal)}
+.q{font-size:21px;font-weight:600;line-height:1.3;margin-bottom:18px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;min-height:56px;padding:12px 16px;text-align:left;background:var(--paper);border:1.5px solid var(--line);border-radius:14px;font:500 16px/1.35 var(--sans);color:var(--wine);cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--teal)}
+.opt .dot{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--teal)}
+.opt small{display:block;font-weight:400;color:#5d4a4f;font-size:14px}
+.finder-foot{display:flex;justify-content:space-between;align-items:center;margin-top:20px;min-height:24px}
+.linkbtn{background:none;border:0;padding:6px 0;font:500 15px var(--sans);color:var(--teal);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.step{animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.result-route{font-family:var(--serif);font-size:30px;line-height:1.15;margin:4px 0 12px}
+.result-label{font-size:15px;color:var(--teal);font-weight:600}
+.result p{color:#4a3a3e}
+.result ul{margin:16px 0 22px;padding:0;list-style:none;display:grid;gap:8px;font-size:15px}
+.result li{display:flex;gap:10px}
+.result li svg{flex:none;margin-top:3px}
+
+/* section shells */
+section{padding:112px 0}
+.sec-head{max-width:40rem}
+.sec-head h2{font-size:clamp(34px,4vw,52px);line-height:1.08}
+.sec-head p{margin-top:18px;font-size:19px;color:#4a3a3e}
+
+/* situations */
+.sit{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:start}
+.sit .sec-head{position:sticky;top:120px}
+.sit-aside{margin-top:36px;background:var(--rose-soft);border-radius:20px;padding:24px 26px}
+.sit-aside h3{font-size:22px}
+.sit-aside p{margin-top:8px;font-size:16px}
+.sit-aside a{display:inline-block;margin-top:12px;font-weight:600;color:var(--wine)}
+.sit-list{list-style:none;margin:0;padding:0;border-top:2px solid var(--wine)}
+.sit-list li{border-bottom:1px solid var(--line)}
+.sit-list a{display:grid;grid-template-columns:1fr auto;gap:6px 24px;padding:26px 8px 26px 0;text-decoration:none;transition:padding .2s,background .2s}
+.sit-list a:hover{background:var(--paper);padding-left:18px;padding-right:18px}
+.sit-list h3{font-size:29px;line-height:1.15}
+.sit-routes{grid-column:1;font-size:14px;color:var(--teal);font-weight:600}
+.sit-msg{grid-column:1;font-size:16px;color:#4a3a3e;max-width:36em}
+.sit-go{grid-column:2;grid-row:1/4;align-self:center;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--wine);display:grid;place-items:center;transition:background .2s,color .2s}
+.sit-list a:hover .sit-go{background:var(--wine);color:#fff}
+
+/* process */
+.process{background:var(--slate);color:#fff}
+.process .sec-head p{color:#D2DCE2}
+.strip{list-style:none;margin:64px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);position:relative}
+.strip::before{content:"";position:absolute;left:24px;right:calc(20% - 24px);top:23px;height:2px;background:repeating-linear-gradient(90deg,#8FA6B4 0 8px,transparent 8px 14px)}
+.strip li{position:relative;padding-right:20px}
+.strip .n{width:48px;height:48px;border-radius:50%;background:var(--slate);border:2px solid #8FA6B4;display:grid;place-items:center;font-family:var(--serif);font-size:20px;position:relative}
+.strip li.done .n{background:var(--rose);border-color:var(--rose);color:var(--wine)}
+.strip h3{font-family:var(--sans);font-weight:600;font-size:18px;margin-top:18px}
+.strip p{font-size:15px;color:#C6D2DA;margin-top:6px}
+.strip-line{margin-top:44px;font-family:var(--serif);font-size:26px;color:var(--rose)}
+
+.portal-row{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;margin-top:80px;align-items:center}
+.mock{background:var(--mist);color:var(--wine);border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.55)}
+.mock-bar{display:flex;align-items:center;gap:12px;padding:14px 20px;background:var(--paper);border-bottom:1px solid var(--line);font-size:14px}
+.mock-bar b{font-family:var(--serif);font-weight:400;font-size:18px}
+.mock-bar span{margin-left:auto;color:#5d4a4f}
+.mock-body{padding:24px}
+.case-title{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.case-title h3{font-size:24px}
+.pill{font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--rose-soft);color:var(--wine)}
+.track{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:18px 0 6px}
+.track i{height:8px;border-radius:4px;background:var(--line)}
+.track i.d{background:var(--teal)}
+.track i.a{background:repeating-linear-gradient(90deg,var(--teal) 0 6px,#7FA9A9 6px 12px)}
+.track-l{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;font-size:12px;color:#5d4a4f}
+.docs{margin-top:22px;background:var(--paper);border-radius:14px;padding:6px 18px}
+.doc{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #E3EAE8;font-size:15px}
+.doc:last-child{border-bottom:0}
+.doc .who{width:32px;height:32px;border-radius:50%;background:var(--slate);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:600;flex:none}
+.doc .st{margin-left:auto;font-size:13px;font-weight:600;white-space:nowrap}
+.st.ok{color:var(--teal)}
+.st.need{color:#9B3552}
+.worker{display:flex;align-items:center;gap:12px;margin-top:18px;font-size:14px;color:#4a3a3e}
+.worker .who{width:36px;height:36px;border-radius:50%;background:var(--rose);color:var(--wine);display:grid;place-items:center;font-weight:700;font-size:13px}
+.feel{list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.feel h3{font-family:var(--sans);font-size:18px;font-weight:600}
+.feel p{font-size:15px;color:#D2DCE2;margin-top:4px}
+
+/* honesty + fees */
+.honest{background:var(--wine);color:#fff}
+.honest blockquote{margin:0;font-family:var(--serif);font-size:clamp(32px,4.2vw,56px);line-height:1.12;color:var(--rose);max-width:20ch}
+.honest cite{display:block;margin-top:22px;font-style:normal;font-size:15px;color:#D9C3C8}
+.fees{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;margin-top:96px;align-items:start}
+.fees h2{font-size:clamp(30px,3.4vw,44px);line-height:1.1}
+.fees-points{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:18px}
+.fees-points li{padding-left:22px;position:relative;color:#E8DADD}
+.fees-points li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:50%;background:var(--rose)}
+.quote{background:#FBF7F8;color:var(--wine);border-radius:22px;padding:30px 32px}
+.quote-head{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap;padding-bottom:16px;border-bottom:2px solid var(--wine)}
+.quote-head b{font-family:var(--serif);font-weight:400;font-size:22px}
+.quote-head span{font-size:14px;color:#6b585d}
+.quote table{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px}
+.quote th{text-align:left;font-size:13px;font-weight:600;color:var(--teal);padding:18px 0 6px}
+.quote td{padding:9px 0;border-bottom:1px solid #EBDDE1}
+.quote td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:16px}
+.quote .ph{color:#9B3552;font-weight:600}
+.quote tfoot td{border:0;padding-top:16px;font-weight:700;font-size:16px}
+.quote-cta{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:18px;flex-wrap:wrap;font-size:14px;color:#6b585d}
+
+/* trust */
+.trust{padding:72px 0}
+.trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.trust-row div{display:grid;gap:8px;align-content:start}
+.trust-row svg{color:var(--teal)}
+.trust-row h3{font-family:var(--sans);font-weight:600;font-size:17px}
+.trust-row p{font-size:15px;color:#4a3a3e}
+
+/* story + team */
+.people{padding-top:40px}
+.story{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;background:var(--paper);border-radius:28px;padding:48px}
+.story-mark{font-family:var(--serif);font-size:120px;line-height:.7;color:var(--rose)}
+.story p.q2{font-family:var(--serif);font-size:clamp(24px,2.6vw,32px);line-height:1.3;max-width:28em}
+.story .by{margin-top:20px;font-size:15px;color:#4a3a3e}
+.note{display:inline-block;margin-top:14px;font-size:13px;font-weight:600;color:#9B3552;background:var(--rose-soft);padding:4px 10px;border-radius:6px}
+.team{margin-top:96px;display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:start}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.person .ph-img{aspect-ratio:4/5;border-radius:18px;background:linear-gradient(160deg,#D5E1DF,#BCCDCB);display:grid;place-items:center;font-family:var(--serif);font-size:42px;color:var(--teal)}
+.person h3{font-family:var(--sans);font-weight:600;font-size:17px;margin-top:14px}
+.person p{font-size:14px;color:#4a3a3e;margin-top:2px}
+
+/* booking */
+.book{background:var(--deep);color:#fff}
+.book .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}
+.book .sec-head p{color:#C6D6D4}
+.book-list{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:12px;color:#D6E3E1;font-size:16px}
+.book-list li{display:flex;gap:12px}
+.book-list svg{flex:none;margin-top:3px;color:var(--rose)}
+.embed{background:var(--mist);color:var(--wine);border-radius:26px;padding:30px}
+.embed-src{font-size:13px;color:#5d4a4f;margin-bottom:18px}
+fieldset{border:0;margin:0 0 22px;padding:0}
+legend{font-weight:600;font-size:15px;margin-bottom:10px;padding:0}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.seg span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);font-size:15px;font-weight:500}
+.seg input:checked+span{background:var(--teal);border-color:var(--teal);color:#fff}
+.seg input:focus-visible+span{outline:3px solid var(--rose);outline-offset:2px}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.days span{flex-direction:column;justify-content:center;width:100%;min-height:62px;line-height:1.2;text-align:center}
+.days small{font-size:12px;font-weight:400;opacity:.8}
+.days label,.times label{display:block}
+.times{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.times span{justify-content:center;width:100%}
+.times label.off span{opacity:.4;text-decoration:line-through}
+.consent{font-size:13px;color:#5d4a4f;margin-top:16px}
+.consent a{color:var(--wine)}
+
+/* faq */
+.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:2px solid var(--wine)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font-size:19px;font-weight:600}
+summary::-webkit-details-marker{display:none}
+summary svg{flex:none;transition:transform .2s}
+details[open] summary svg{transform:rotate(45deg)}
+details p{padding:0 0 24px;color:#4a3a3e;max-width:38em}
+
+/* footer */
+footer{background:var(--wine);color:#E8DADD;padding:72px 0 40px;font-size:15px}
+.foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px}
+.foot .brand{color:#fff}
+.foot h3{font-family:var(--sans);font-weight:600;font-size:15px;color:#fff;margin-bottom:12px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot a{text-decoration:none}
+.foot a:hover{text-decoration:underline}
+.legal{margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.15);font-size:13px;color:#C7B3B8;display:flex;flex-wrap:wrap;gap:8px 28px}
+
+/* responsive */
+@media (max-width:1020px){
+  .nav{display:none}
+  .hero .wrap,.sit,.portal-row,.fees,.team,.book .wrap,.faq .wrap{grid-template-columns:1fr;gap:48px}
+  .sit .sec-head{position:static}
+  .trust-row{grid-template-columns:1fr 1fr}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  section{padding:80px 0}
+  .top .wrap{gap:12px}
+  .lang,.top .btn{display:none}
+  .hero{padding:48px 0 72px}
+  .finder{padding:24px 20px;border-radius:22px}
+  .strip{grid-template-columns:1fr;gap:28px}
+  .strip::before{left:23px;right:auto;top:24px;bottom:24px;width:2px;height:auto;background:repeating-linear-gradient(180deg,#8FA6B4 0 8px,transparent 8px 14px)}
+  .strip li{display:grid;grid-template-columns:48px 1fr;gap:4px 18px;padding:0}
+  .strip .n{grid-row:1/3}
+  .strip h3{margin-top:10px}
+  .strip p{grid-column:2}
+  .sit-list h3{font-size:24px}
+  .sit-go{display:none}
+  .story{grid-template-columns:1fr;padding:32px 24px;gap:8px}
+  .story-mark{font-size:80px}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .trust-row,.foot{grid-template-columns:1fr}
+  .days{grid-template-columns:repeat(3,1fr)}
+  .times{grid-template-columns:repeat(2,1fr)}
+  .quote{padding:24px 20px}
+  .track-l{font-size:10px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <picture>
+        <source srcset="assets/fineway-logo.svg" media="(prefers-reduced-motion: reduce)" width="147" height="47">
+        <img src="assets/fineway-logo-animated.svg" alt="fineway home" width="143" height="40">
+      </picture>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#situations">Visas</a>
+      <a href="#process">How it works</a>
+      <a href="#fees">Fees</a>
+      <a href="#team">Team</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <div class="top-right">
+      <div class="lang" aria-label="Language"><a href="#" aria-current="true">EN</a><a href="#" lang="de">DE</a></div>
+      <a class="portal" href="#portal-signin">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        Sign in to your portal
+      </a>
+      <a class="btn btn-rose" href="#book">Book a free consultation</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <svg class="hero-route" viewBox="0 0 1440 760" preserveAspectRatio="none" aria-hidden="true"><path d="M-40 700 C 260 640, 300 420, 560 460 S 900 700, 1100 420 S 1380 120, 1500 60" fill="none" stroke="#376E6F" stroke-width="2" stroke-dasharray="2 12" stroke-linecap="round"/></svg>
+  <div class="wrap">
+    <div>
+      <h1>Your visa for South Africa, without the guesswork.</h1>
+      <p class="promise">We find the route that fits your situation, file it in South Africa or from abroad, and you see every step in your own portal.</p>
+      <div class="hero-cta">
+        <a class="btn btn-rose" href="#book">Book a free consultation</a>
+        <a class="btn btn-ghost" href="#finder" id="toFinder">Which visa fits me?</a>
+      </div>
+      <div class="hero-facts">
+        <div><strong>About 40</strong>applications a month</div>
+        <div><strong>English, Deutsch</strong>spoken by the team</div>
+        <div><strong>1 working day</strong>until we reply</div>
+      </div>
+    </div>
+
+    <div class="finder" id="finder" aria-live="polite">
+      <div class="finder-head">
+        <span class="finder-title">Which visa fits me?</span>
+        <span class="finder-count" id="fCount">Question 1 of 5</span>
+      </div>
+      <div class="finder-bar" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+      <div id="fBody"></div>
+      <div class="finder-foot">
+        <button class="linkbtn" id="fBack" type="button" hidden>Back</button>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="situations">
+  <div class="wrap sit">
+    <div class="sec-head">
+      <h2>Start from your situation, not the Immigration Act.</h2>
+      <p>Each situation has its own routes, documents and timelines. Pick yours to see what it takes.</p>
+      <div class="sit-aside" lang="de">
+        <h3>Sie leben in Deutschland?</h3>
+        <p>Die meisten unserer Anträge aus dem Ausland laufen über Deutschland. Wir beraten Sie auf Deutsch, vom Ruhestandsvisum bis zur Verlängerung.</p>
+        <a href="#book">Kostenlose Erstberatung buchen</a>
+      </div>
+    </div>
+    <ul class="sit-list">
+      <li><a href="#book">
+        <h3>Retire in South Africa</h3>
+        <span class="sit-routes">Retired person's visa, pension or net-worth route, renewals</span>
+        <span class="sit-msg">The income thresholds explained plainly, the whole family on one application, and your renewal remembered for you.</span>
+        <span class="sit-go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li>
+      <li><a href="#book">
+        <h3>Work in South Africa</h3>
+        <span class="sit-routes">Critical skills, general work, intra-company transfer, business visa</span>
+        <span class="sit-msg">Which route fits your profession, what your employer has to supply, and timelines you can plan around.</span>
+        <span class="sit-go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li>
+      <li><a href="#book">
+        <h3>Already here: extend or change your visa</h3>
+        <span class="sit-routes">Visitor's visa extension, change of status in-country</span>
+        <span class="sit-msg">No need to leave South Africa. We book your VFS appointment and prepare you for it.</span>
+        <span class="sit-go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li>
+      <li><a href="#book">
+        <h3>Join your partner or family</h3>
+        <span class="sit-routes">Spousal, life-partner and relatives' visas, children</span>
+        <span class="sit-msg">Relationship proof that holds up, and minors and guardians handled with care.</span>
+        <span class="sit-go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li>
+      <li><a href="#book">
+        <h3>Permanent residence</h3>
+        <span class="sit-routes">After a work or retirement visa</span>
+        <span class="sit-msg">The long game. We keep your file and tell you when you qualify.</span>
+        <span class="sit-go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li>
+      <li><a href="#book">
+        <h3>Study, remote work and other routes</h3>
+        <span class="sit-routes">Study visa, remote work visa, other temporary residence</span>
+        <span class="sit-msg">Not sure which fits? A free consultation starts with exactly that question.</span>
+        <span class="sit-go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li>
+      <li><a href="#book">
+        <h3>For companies</h3>
+        <span class="sit-routes">Several employees, one account</span>
+        <span class="sit-msg">One contact for all your applicants, status visible to your HR team, billing on account.</span>
+        <span class="sit-go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Five steps, and you know which one you're on.</h2>
+      <p>From the first call to the decision, the same named case worker looks after you, with the team in copy.</p>
+    </div>
+    <ol class="strip">
+      <li class="done"><span class="n">1</span><h3>Consultation</h3><p>Video, phone or at the office, at a time that's actually free.</p></li>
+      <li class="done"><span class="n">2</span><h3>Quotation</h3><p>Our fees and government costs listed separately. Accept with one click.</p></li>
+      <li><span class="n">3</span><h3>Documents</h3><p>Upload for the whole family. We read the passports, you confirm.</p></li>
+      <li><span class="n">4</span><h3>Application lodged</h3><p>Filed with Home Affairs or a mission abroad. VFS booked for you.</p></li>
+      <li><span class="n">5</span><h3>Decision</h3><p>We tell you the moment it's in, and what comes next.</p></li>
+    </ol>
+    <p class="strip-line">You always see where your case stands.</p>
+
+    <div class="portal-row">
+      <figure class="mock" style="margin:0" aria-label="Example of the client portal">
+        <div class="mock-bar"><b>fineway</b> client portal <span>Example case</span></div>
+        <div class="mock-body">
+          <div class="case-title"><h3>Retired person's visa, Weber family</h3><span class="pill">Step 3 of 5: Documents</span></div>
+          <div class="track" aria-hidden="true"><i class="d"></i><i class="d"></i><i class="a"></i><i></i><i></i></div>
+          <div class="track-l" aria-hidden="true"><span>Consultation</span><span>Quotation</span><span>Documents</span><span>Lodged</span><span>Decision</span></div>
+          <div class="docs">
+            <div class="doc"><span class="who">KW</span>Passport, Klaus<span class="st ok">Checked</span></div>
+            <div class="doc"><span class="who">KW</span>Pension proof, last 3 months<span class="st ok">Checked</span></div>
+            <div class="doc"><span class="who">MW</span>Police clearance, Germany, apostilled<span class="st need">Still needed</span></div>
+            <div class="doc"><span class="who">MW</span>Marriage certificate, translated<span class="st need">Still needed</span></div>
+          </div>
+          <div class="worker"><span class="who">CW</span>Your case worker: [Name], updated today</div>
+        </div>
+      </figure>
+      <ul class="feel">
+        <li><h3>Your own portal from day one</h3><p>The quotation, and later every document still needed, shown per person.</p></li>
+        <li><h3>We read your documents for you</h3><p>Passport details are taken from the scan. You only confirm them.</p></li>
+        <li><h3>Questions once, not twice</h3><p>The application form is a short conversation. Anything you told us before is already filled in.</p></li>
+        <li><h3>Sign electronically</h3><p>Engagement letter and powers of attorney by DocuSign.</p></li>
+        <li><h3>Updates when you want them</h3><p>An email when something changes, as often as you choose.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="honest" id="fees">
+  <div class="wrap">
+    <blockquote>The decision is Home Affairs', not ours. We cannot guarantee an outcome, and our fee does not depend on it.<cite>From our engagement terms</cite></blockquote>
+
+    <div class="fees">
+      <div>
+        <h2>What you pay, and when.</h2>
+        <ul class="fees-points">
+          <li>Our fees are earned in stages, as the work is done.</li>
+          <li>Government and VFS costs are passed on at actual cost, with receipts.</li>
+          <li>Your deposit is held on account. Anything above what we have earned is refunded.</li>
+          <li>VAT is shown separately on every line it applies to.</li>
+        </ul>
+      </div>
+      <div class="quote">
+        <div class="quote-head"><b>Example quotation</b><span>Retired person's visa, couple, filed in South Africa</span></div>
+        <table>
+          <thead><tr><th colspan="2">Our service fees</th></tr></thead>
+          <tbody>
+            <tr><td>First consultation</td><td>Free</td></tr>
+            <tr><td>Stage 1: route check and document review</td><td class="ph">R [price]</td></tr>
+            <tr><td>Stage 2: application prepared and lodged</td><td class="ph">R [price]</td></tr>
+            <tr><td>VAT 15% on service fees</td><td class="ph">R [amount]</td></tr>
+          </tbody>
+          <tbody>
+            <tr><th colspan="2">Passed on at cost, with receipts</th></tr>
+            <tr><td>Home Affairs application fee, 2 people</td><td class="ph">R [amount]</td></tr>
+            <tr><td>VFS service fee, 2 people</td><td class="ph">R [amount]</td></tr>
+          </tbody>
+          <tfoot><tr><td>Total</td><td class="ph">R [total]</td></tr></tfoot>
+        </table>
+        <div class="quote-cta"><span>Example only. Your quotation follows the consultation.</span><a class="btn btn-wine" href="#book">Get your quotation</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Why you can trust us">
+  <div class="wrap trust-row">
+    <div>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>
+      <h3>Google reviews</h3><p>[Live reviews widget: rating and latest reviews]</p>
+    </div>
+    <div>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+      <h3>Registered business</h3><p>Reg. no. [number], VAT no. [number], with a physical office in [city].</p>
+    </div>
+    <div>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      <h3>Your data under POPIA</h3><p>Documents stored encrypted in the EU. You see and correct your own data in the portal.</p>
+    </div>
+    <div>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <h3>An answer within one working day</h3><p>From a person who knows your file, writing from their own address.</p>
+    </div>
+  </div>
+</section>
+
+<section class="people" id="team">
+  <div class="wrap">
+    <figure class="story" style="margin:0">
+      <div class="story-mark" aria-hidden="true">“</div>
+      <div>
+        <p class="q2">[Client story: a retired couple who applied from Germany. What worried them, what we did, how it turned out. In their words, two or three sentences.]</p>
+        <p class="by">[Name], retired to [town] from [country]</p>
+        <span class="note">Placeholder: real story, with written consent</span>
+      </div>
+    </figure>
+
+    <div class="team">
+      <div class="sec-head">
+        <h2>The people who handle your file.</h2>
+        <p>Named, reachable, and in copy on every case, so nothing stalls when someone is away.</p>
+      </div>
+      <div class="team-grid">
+        <div class="person"><div class="ph-img" aria-hidden="true">JK</div><h3>Judith Kubasch</h3><p>Founder. English, Deutsch. [Years] in immigration work.</p></div>
+        <div class="person"><div class="ph-img" aria-hidden="true">[ ]</div><h3>[Name]</h3><p>Case worker. [Languages]</p></div>
+        <div class="person"><div class="ph-img" aria-hidden="true">[ ]</div><h3>[Name]</h3><p>Answers the phone. [Languages]</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Book a free consultation.</h2>
+      <p>Thirty minutes about your situation and the route that fits. You'll know what it takes before you pay anything.</p>
+      <ul class="book-list">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Only times that are really free are shown</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Confirmation and calendar invitation straight away</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>A link to move or cancel, any time</li>
+      </ul>
+    </div>
+    <form class="embed" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Consultation booked';">
+      <p class="embed-src">Booking by EasyVisaFlow (embedded)</p>
+      <fieldset><legend>Who is this for?</legend>
+        <div class="seg"><label><input type="radio" name="who" checked><span>Me or my family</span></label><label><input type="radio" name="who"><span>My company's staff</span></label></div>
+      </fieldset>
+      <fieldset><legend>How would you like to talk?</legend>
+        <div class="seg"><label><input type="radio" name="how" checked><span>Video</span></label><label><input type="radio" name="how"><span>Phone</span></label><label><input type="radio" name="how"><span>At the office</span></label></div>
+      </fieldset>
+      <fieldset><legend>Day</legend>
+        <div class="seg days" id="days"></div>
+      </fieldset>
+      <fieldset><legend>Time (South African time)</legend>
+        <div class="seg times">
+          <label><input type="radio" name="t" checked><span>09:00</span></label>
+          <label class="off"><input type="radio" name="t" disabled><span>10:00</span></label>
+          <label><input type="radio" name="t"><span>11:30</span></label>
+          <label><input type="radio" name="t"><span>14:00</span></label>
+        </div>
+      </fieldset>
+      <button class="btn btn-rose" type="submit" style="width:100%">Book this time</button>
+      <p class="consent">We use your details only to arrange and hold the consultation. <a href="#privacy">Privacy notice (POPIA)</a></p>
+    </form>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head"><h2>Questions people ask before they book.</h2></div>
+    <div>
+      <details><summary>Can you guarantee that my visa is approved?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>No one honestly can. The decision is Home Affairs'. What we can do is choose the right route, make the file complete and correct, and tell you plainly if we see a risk. Our fee does not depend on the outcome.</p></details>
+      <details><summary>Can I apply without leaving South Africa?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Often, yes. About half of our applications are filed in-country, as extensions or changes of status. We check in the consultation whether your route allows it.</p></details>
+      <details><summary>How long is a police clearance valid?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>You need one for every country you lived in for 12 months or more since turning 18, and they expire. We plan the order of your documents so none run out before the application is lodged.</p></details>
+      <details><summary>What if I'm not happy with your service?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Write to [name, email]. You get an answer within 10 working days. If that doesn't resolve it, you can go to the Consumer Goods and Services Ombud.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><img src="assets/fineway-logo.svg" alt="fineway, back to top" width="184" height="59"></a>
+        <p style="margin-top:16px;max-width:26em">South African visas for retirees, professionals, families and companies. Since [year].</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul><li>[Physical address]</li><li>[Phone]</li><li>[Email]</li><li><a href="#portal-signin" id="portal-signin">Sign in to your portal</a></li></ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <ul><li><a href="#privacy" id="privacy">Privacy notice (POPIA)</a></li><li><a href="#">Terms and complaints</a></li><li><a href="#">Imprint</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>fineway is a trading name of [registered name]</span>
+      <span>Reg. no. [number]</span>
+      <span>VAT no. [number]</span>
+      <span>Information officer: [name]</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // booking days
+  const days=document.getElementById('days');
+  const names=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  let d=new Date(),n=0;
+  while(n<5){d.setDate(d.getDate()+1);const w=(d.getDay()+6)%7;if(w>4)continue;
+    const l=document.createElement('label');
+    l.innerHTML='<input type="radio" name="day"'+(n===0?' checked':'')+'><span>'+names[w]+'<small>'+d.getDate()+' '+d.toLocaleString('en',{month:'short'})+'</small></span>';
+    days.appendChild(l);n++;}
+
+  // route finder
+  const Q=[
+    {k:'where',q:'Where are you right now?',o:[['sa','In South Africa'],['abroad','Outside South Africa']]},
+    {k:'why',q:'What brings you to South Africa?',o:[['retire','Retiring'],['work','Working'],['family','Joining a partner or family'],['study','Studying or working remotely'],['company','Sending staff from my company']]},
+    {k:'who',q:'Who is coming?',o:[['me','Just me'],['couple','Me and my partner'],['kids','A family with children'],['staff','Several employees']]},
+    {k:'visa',q:'Do you hold a South African visa now?',o:[['visitor',"Yes, a visitor's visa"],['other','Yes, another visa'],['none','No']]},
+    {k:'when',q:'When do you want this sorted?',o:[['soon','Within 3 months','A visa expiring soon counts here'],['year','In 3 to 12 months'],['later','Later than that']]}
+  ];
+  const R={
+    retire:["Retired person's visa","Pension or net-worth route. We check which of the two your income proof supports."],
+    work:["Critical skills or general work visa","Which one depends on your profession and your employer. We look at both with you."],
+    family:["Spousal, life-partner or relatives' visa","The route depends on your relationship and the visa your partner holds."],
+    study:["Study or remote work visa","Short routes with their own document lists. We confirm the right one."],
+    company:["Corporate account for your staff","One contact for all applicants, status visible to your HR team."]
+  };
+  const ans={};let i=0;
+  const body=document.getElementById('fBody'),count=document.getElementById('fCount'),back=document.getElementById('fBack'),bars=document.querySelectorAll('.finder-bar span');
+  const tick='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#376E6F" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
+  function render(focus){
+    bars.forEach((b,j)=>b.classList.toggle('on',j<=i));
+    back.hidden=i===0;
+    if(i<Q.length){
+      const q=Q[i];count.textContent='Question '+(i+1)+' of '+Q.length;
+      body.innerHTML='<div class="step"><p class="q" id="fq">'+q.q+'</p><div class="opts" role="group" aria-labelledby="fq">'+
+        q.o.map(o=>'<button type="button" class="opt" data-v="'+o[0]+'"><span class="dot" aria-hidden="true"></span><span>'+o[1]+(o[2]?'<small>'+o[2]+'</small>':'')+'</span></button>').join('')+'</div></div>';
+      body.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ans[q.k]=b.dataset.v;i++;render(true)});
+    }else{
+      count.textContent='Your likely route';
+      const r=R[ans.why];const pts=[];
+      if(ans.where==='sa'&&ans.visa==='visitor')pts.push("You may not need to leave: a change of status in South Africa could work.");
+      else if(ans.where==='abroad')pts.push("You'd apply through a South African mission or VFS centre abroad. We handle that, Germany included.");
+      else pts.push("We check whether you can apply from inside South Africa.");
+      if(ans.who==='kids')pts.push("Children's documents: birth certificates and consent from both parents.");
+      else if(ans.who==='couple')pts.push("You can apply together on one application.");
+      if(ans.when==='soon')pts.push("Tight timing: book soon so police clearances don't hold you up.");
+      body.innerHTML='<div class="step result"><p class="result-label">Based on your answers</p><p class="result-route">'+r[0]+'</p><p>'+r[1]+'</p><ul>'+pts.map(p=>'<li>'+tick+'<span>'+p+'</span></li>').join('')+'</ul><a class="btn btn-wine" href="#book" style="width:100%">Book a free consultation about this</a></div>';
+    }
+    if(focus){const f=body.querySelector('.opt,.btn');f&&f.focus({preventScroll:true});}
+  }
+  back.onclick=()=>{i--;render(true)};
+  render(false);
+})();
+</script>
+</body>
+</html>
