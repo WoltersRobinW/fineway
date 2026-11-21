@@ -64,7 +64,10 @@ p{margin:0}
 /* hero */
 .hero{background:var(--deep);color:#fff;padding:72px 0 96px;position:relative;overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start;position:relative}
-.hero-route{position:absolute;inset:0;pointer-events:none}
+.hero-photo{position:absolute;top:0;right:0;bottom:0;width:48%}
+.hero-photo picture,.hero-photo img{display:block;width:100%;height:100%}
+.hero-photo img{object-fit:cover;object-position:32% 35%}
+.hero .finder{align-self:end;margin-top:260px}
 .hero h1{font-size:clamp(44px,5.6vw,76px);line-height:1.02;margin-top:8px;max-width:11ch}
 .promise{font-size:20px;line-height:1.5;color:#D6E3E1;margin-top:28px;max-width:30em}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
@@ -104,8 +107,10 @@ section{padding:112px 0}
 
 /* situations */
 .sit{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:start}
-.sit .sec-head{position:sticky;top:120px}
-.sit-aside{margin-top:36px;background:var(--rose-soft);border-radius:20px;padding:24px 26px}
+.sit-photo{margin:36px 0 0}
+.sit-photo img{display:block;width:100%;aspect-ratio:5/4;object-fit:cover;object-position:50% 40%;border-radius:20px}
+figcaption{font-size:14px;color:#5d4a4f;margin-top:10px}
+.sit-aside{margin-top:28px;background:var(--rose-soft);border-radius:20px;padding:24px 26px}
 .sit-aside h3{font-size:22px}
 .sit-aside p{margin-top:8px;font-size:16px}
 .sit-aside a{display:inline-block;margin-top:12px;font-weight:600;color:var(--wine)}
@@ -121,6 +126,9 @@ section{padding:112px 0}
 
 /* process */
 .process{background:var(--slate);color:#fff}
+.process{padding-top:0}
+.road img{display:block;width:100%;height:clamp(220px,30vw,420px);object-fit:cover;object-position:50% 92%}
+.process .road+.wrap{padding-top:96px}
 .process .sec-head p{color:#D2DCE2}
 .strip{list-style:none;margin:64px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);position:relative}
 .strip::before{content:"";position:absolute;left:24px;right:calc(20% - 24px);top:23px;height:2px;background:repeating-linear-gradient(90deg,#8FA6B4 0 8px,transparent 8px 14px)}
@@ -207,6 +215,8 @@ section{padding:112px 0}
 .book-list{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:12px;color:#D6E3E1;font-size:16px}
 .book-list li{display:flex;gap:12px}
 .book-list svg{flex:none;margin-top:3px;color:var(--rose)}
+.team-photo{margin:36px 0 0}
+.team-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 45%;border-radius:20px}
 .embed{background:var(--mist);color:var(--wine);border-radius:26px;padding:30px}
 .embed-src{font-size:13px;color:#5d4a4f;margin-bottom:18px}
 fieldset{border:0;margin:0 0 22px;padding:0}
@@ -251,7 +261,9 @@ footer{background:var(--wine);color:#E8DADD;padding:72px 0 40px;font-size:15px}
 @media (max-width:1020px){
   .nav{display:none}
   .hero .wrap,.sit,.portal-row,.fees,.team,.book .wrap,.faq .wrap{grid-template-columns:1fr;gap:48px}
-  .sit .sec-head{position:static}
+  .hero{padding-top:0}
+  .hero-photo{position:relative;width:auto;height:min(56vw,420px);margin-bottom:40px}
+  .hero .finder{margin-top:0}
   .trust-row{grid-template-columns:1fr 1fr}
   .foot{grid-template-columns:1fr 1fr}
 }
@@ -261,7 +273,7 @@ footer{background:var(--wine);color:#E8DADD;padding:72px 0 40px;font-size:15px}
   section{padding:80px 0}
   .top .wrap{gap:12px}
   .lang,.top .btn{display:none}
-  .hero{padding:48px 0 72px}
+  .hero{padding:0 0 72px}
   .finder{padding:24px 20px;border-radius:22px}
   .strip{grid-template-columns:1fr;gap:28px}
   .strip::before{left:23px;right:auto;top:24px;bottom:24px;width:2px;height:auto;background:repeating-linear-gradient(180deg,#8FA6B4 0 8px,transparent 8px 14px)}
@@ -313,7 +325,7 @@ footer{background:var(--wine);color:#E8DADD;padding:72px 0 40px;font-size:15px}
 
 <main id="main">
 <section class="hero" id="top">
-  <svg class="hero-route" viewBox="0 0 1440 760" preserveAspectRatio="none" aria-hidden="true"><path d="M-40 700 C 260 640, 300 420, 560 460 S 900 700, 1100 420 S 1380 120, 1500 60" fill="none" stroke="#376E6F" stroke-width="2" stroke-dasharray="2 12" stroke-linecap="round"/></svg>
+  <div class="hero-photo"><picture><source type="image/webp" srcset="assets/img/table-mountain-1024.webp 1024w, assets/img/table-mountain-2048.webp 2048w" sizes="(max-width: 1020px) 100vw, 50vw"><img src="assets/img/table-mountain-1024.jpg" alt="Table Mountain and Cape Town at dusk, seen from above the Atlantic" fetchpriority="high"></picture></div>
   <div class="wrap">
     <div>
       <h1>Your visa for South Africa, without the guesswork.</h1>
@@ -349,6 +361,7 @@ footer{background:var(--wine);color:#E8DADD;padding:72px 0 40px;font-size:15px}
     <div class="sec-head">
       <h2>Start from your situation, not the Immigration Act.</h2>
       <p>Each situation has its own routes, documents and timelines. Pick yours to see what it takes.</p>
+      <figure class="sit-photo"><picture><source type="image/webp" srcset="assets/img/manor-640.webp 640w, assets/img/manor-1280.webp 1280w" sizes="(max-width: 1020px) 100vw, 440px"><img src="assets/img/manor-640.jpg" alt="A Cape Dutch manor house at the end of vineyard rows" loading="lazy" decoding="async"></picture><figcaption>Constantia valley, Cape Town</figcaption></figure>
       <div class="sit-aside" lang="de">
         <h3>Sie leben in Deutschland?</h3>
         <p>Die meisten unserer Anträge aus dem Ausland laufen über Deutschland. Wir beraten Sie auf Deutsch, vom Ruhestandsvisum bis zur Verlängerung.</p>
@@ -403,6 +416,7 @@ footer{background:var(--wine);color:#E8DADD;padding:72px 0 40px;font-size:15px}
 </section>
 
 <section class="process" id="process">
+  <div class="road"><picture><source type="image/webp" srcset="assets/img/road-1200.webp 1200w, assets/img/road-2400.webp 2400w" sizes="100vw"><img src="assets/img/road-1200.jpg" alt="A wet city street with red lanes running into the distance" loading="lazy" decoding="async"></picture></div>
   <div class="wrap">
     <div class="sec-head">
       <h2>Five steps, and you know which one you're on.</h2>
@@ -517,6 +531,7 @@ footer{background:var(--wine);color:#E8DADD;padding:72px 0 40px;font-size:15px}
       <div class="sec-head">
         <h2>The people who handle your file.</h2>
         <p>Named, reachable, and in copy on every case, so nothing stalls when someone is away.</p>
+      <figure class="team-photo"><picture><source type="image/webp" srcset="assets/img/doorway-640.webp 640w, assets/img/doorway-1280.webp 1280w" sizes="(max-width: 1020px) 100vw, 440px"><img src="assets/img/doorway-640.jpg" alt="An open arched doorway in a white Cape Dutch gable, shaded by an oak" loading="lazy" decoding="async"></picture></figure>
       </div>
       <div class="team-grid">
         <div class="person"><div class="ph-img" aria-hidden="true">JK</div><h3>Judith Kubasch</h3><p>Founder. English, Deutsch. [Years] in immigration work.</p></div>
@@ -597,6 +612,7 @@ footer{background:var(--wine);color:#E8DADD;padding:72px 0 40px;font-size:15px}
       <span>Reg. no. [number]</span>
       <span>VAT no. [number]</span>
       <span>Information officer: [name]</span>
+      <span>Photos: Sipho Ndebele, Benita Barnard and jvdm on Pexels; Table Mountain: [photographer, source]</span>
     </div>
   </div>
 </footer>
