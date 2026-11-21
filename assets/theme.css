@@ -1,16 +1,16 @@
-/* fineway theme: rose (#2F4454 #2E151B #DA7B93 #376E6F #1C3334) */
+/* fineway theme: blue (Jet Stream #BDD9BF, Charcoal #2E4052, Mustard #FFC857, White #FFFFFF) */
 :root{
-  --ground:#EEF2F1;  --paper:#FFFFFF;
-  --ink:#2E151B;     --ink-2:#4A3A3E;  --ink-3:#5D4A4F;
-  --dark-1:#1C3334;  /* header, hero, booking */
-  --dark-2:#2F4454;  /* how it works */
-  --dark-3:#2E151B;  --dark-3-hover:#4A2730;  /* fees, footer */
-  --accent:#DA7B93;  --accent-hover:#E596AA;  --on-accent:#2E151B;
-  --soft:#F6DDE4;
-  --second:#376E6F;  --second-2:#7FA9A9;
-  --line:#C9D6D4;    --line-2:#E3EAE8;
-  --flag:#9B3552;
-  --quote-bg:#FBF7F8; --quote-line:#EBDDE1;
-  --od-strong:rgba(255,255,255,.82); --od-soft:rgba(255,255,255,.70); --od-faint:rgba(255,255,255,.45);
-  --logo-ink:#EEF2F1;
+  --ground:#F3F8F3;  --paper:#FFFFFF;
+  --ink:#2E4052;     --ink-2:#465668;  --ink-3:#56677A;
+  --dark-1:#2E4052;  /* header, hero, booking */
+  --dark-2:#3A5068;  /* how it works */
+  --dark-3:#1F2D3B;  --dark-3-hover:#2E4052;  /* fees, footer */
+  --accent:#FFC857;  --accent-hover:#FFD580;  --on-accent:#2E4052;
+  --soft:#BDD9BF;
+  --second:#3D6B47;  --second-2:#8DB894;
+  --line:#C3D9C5;    --line-2:#E2EEE3;
+  --flag:#A23B22;
+  --quote-bg:#FFFFFF; --quote-line:#E1E8EF;
+  --od-strong:rgba(255,255,255,.84); --od-soft:rgba(255,255,255,.72); --od-faint:rgba(255,255,255,.45);
+  --logo-ink:#FFFFFF;
 }
