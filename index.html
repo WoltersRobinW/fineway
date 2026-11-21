@@ -68,7 +68,8 @@ p{margin:0}
 .hero-photo picture,.hero-photo img{display:block;width:100%;height:100%}
 .hero-photo img{object-fit:cover;object-position:32% 35%}
 .hero .finder{align-self:end;margin-top:260px}
-.hero h1{font-size:clamp(44px,5.6vw,76px);line-height:1.02;margin-top:8px;max-width:11ch}
+.hero h1{font-size:clamp(36px,4.6vw,64px);line-height:1.04;margin-top:8px;max-width:14ch}
+.nowrap{white-space:nowrap}
 .promise{font-size:20px;line-height:1.5;color:#D6E3E1;margin-top:28px;max-width:30em}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
 .hero-facts{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16);font-size:15px;color:#B9CCCA}
@@ -328,7 +329,7 @@ footer{background:var(--wine);color:#E8DADD;padding:72px 0 40px;font-size:15px}
   <div class="hero-photo"><picture><source type="image/webp" srcset="assets/img/table-mountain-1024.webp 1024w, assets/img/table-mountain-2048.webp 2048w" sizes="(max-width: 1020px) 100vw, 50vw"><img src="assets/img/table-mountain-1024.jpg" alt="Table Mountain and Cape Town at dusk, seen from above the Atlantic" fetchpriority="high"></picture></div>
   <div class="wrap">
     <div>
-      <h1>Your visa for South Africa, without the guesswork.</h1>
+      <h1>Your visa for <span class="nowrap">South Africa.</span></h1>
       <p class="promise">We find the route that fits your situation, file it in South Africa or from abroad, and you see every step in your own portal.</p>
       <div class="hero-cta">
         <a class="btn btn-rose" href="#book">Book a free consultation</a>
