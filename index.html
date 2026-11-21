@@ -37,7 +37,9 @@ img{max-width:100%}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
-h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em;text-wrap:balance}
+blockquote,summary,.q2,.strip-line,.result-route{text-wrap:balance}
+p,li,figcaption{text-wrap:pretty}
 p{margin:0}
 .skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--on-accent);padding:10px 14px;z-index:99}
 .skip:focus{left:8px}
@@ -81,8 +83,8 @@ p{margin:0}
 .nowrap{white-space:nowrap}
 .promise{font-size:20px;line-height:1.5;color:var(--od-strong);margin-top:28px;max-width:30em}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
-.hero-facts{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16);font-size:15px;color:var(--od-soft)}
-.hero-facts strong{display:block;font-family:var(--serif);font-weight:400;font-size:26px;color:#fff;line-height:1.2}
+.hero-facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 36px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16);font-size:15px;color:var(--od-soft)}
+.hero-facts strong{display:block;font-family:var(--serif);font-weight:400;font-size:22px;color:#fff;line-height:1.2;white-space:nowrap}
 
 /* route finder */
 .finder{background:var(--ground);color:var(--ink);border-radius:28px;padding:32px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);position:relative}
@@ -112,7 +114,7 @@ p{margin:0}
 /* section shells */
 section{padding:112px 0}
 .sec-head{max-width:40rem}
-.sec-head h2{font-size:clamp(34px,4vw,52px);line-height:1.08}
+.sec-head h2{font-size:clamp(30px,3.2vw,44px);line-height:1.1}
 .sec-head p{margin-top:18px;font-size:19px;color:var(--ink-2)}
 
 /* situations */
@@ -181,7 +183,7 @@ figcaption{font-size:14px;color:var(--ink-3);margin-top:10px}
 .honest blockquote{margin:0;font-family:var(--serif);font-size:clamp(32px,4.2vw,56px);line-height:1.12;color:var(--accent);max-width:20ch}
 .honest cite{display:block;margin-top:22px;font-style:normal;font-size:15px;color:var(--od-soft)}
 .fees{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;margin-top:96px;align-items:start}
-.fees h2{font-size:clamp(30px,3.4vw,44px);line-height:1.1}
+.fees h2{font-size:clamp(30px,3.2vw,44px);line-height:1.1}
 .fees-points{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:18px}
 .fees-points li{padding-left:22px;position:relative;color:var(--od-strong)}
 .fees-points li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
@@ -285,6 +287,9 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
   .lang,.top .btn{display:none}
   .hero{padding:0 0 72px}
   .finder{padding:24px 20px;border-radius:22px}
+  .hero-facts{grid-template-columns:1fr;gap:16px}
+  .finder-head{flex-direction:column;align-items:flex-start;gap:4px}
+  .finder-title{font-size:22px}
   .strip{grid-template-columns:1fr;gap:28px}
   .strip::before{left:23px;right:auto;top:24px;bottom:24px;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--od-faint) 0 8px,transparent 8px 14px)}
   .strip li{display:grid;grid-template-columns:48px 1fr;gap:4px 18px;padding:0}
@@ -350,7 +355,7 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
   <div class="hero-photo"><picture><source type="image/webp" srcset="assets/img/table-mountain-1024.webp 1024w, assets/img/table-mountain-2048.webp 2048w" sizes="(max-width: 1020px) 100vw, 50vw"><img src="assets/img/table-mountain-1024.jpg" alt="Table Mountain and Cape Town at dusk, seen from above the Atlantic" fetchpriority="high"></picture></div>
   <div class="wrap">
     <div>
-      <h1>Your visa for <span class="nowrap">South Africa,</span> without the guesswork.</h1>
+      <h1>Your visa for <span class="nowrap">South Africa,</span> <span class="nowrap">without the</span> guesswork.</h1>
       <p class="promise">We find the route that fits your situation, file it in South Africa or from abroad, and you see every step in your own portal.</p>
       <div class="hero-cta">
         <a class="btn btn-rose" href="#book">Book a free consultation</a>
@@ -448,7 +453,7 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
       <li class="done"><span class="n">1</span><h3>Consultation</h3><p>Video, phone or at the office, at a time that's actually free.</p></li>
       <li class="done"><span class="n">2</span><h3>Quotation</h3><p>Our fees and government costs listed separately. Accept with one click.</p></li>
       <li><span class="n">3</span><h3>Documents</h3><p>Upload for the whole family. We read the passports, you confirm.</p></li>
-      <li><span class="n">4</span><h3>Application lodged</h3><p>Filed with Home Affairs or a mission abroad. VFS booked for you.</p></li>
+      <li><span class="n">4</span><h3>Application lodged</h3><p>Filed with <span class="nowrap">Home Affairs</span> or a mission abroad. VFS booked for you.</p></li>
       <li><span class="n">5</span><h3>Decision</h3><p>We tell you the moment it's in, and what comes next.</p></li>
     </ol>
     <p class="strip-line">You always see where your case stands.</p>
@@ -482,7 +487,7 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
 
 <section class="honest" id="fees">
   <div class="wrap">
-    <blockquote>The decision is Home Affairs', not ours. We cannot guarantee an outcome, and our fee does not depend on it.<cite>From our engagement terms</cite></blockquote>
+    <blockquote>The decision is <span class="nowrap">Home Affairs'</span>, not ours. We cannot guarantee an outcome, and our fee does not depend on it.<cite>From our engagement terms</cite></blockquote>
 
     <div class="fees">
       <div>
@@ -506,7 +511,7 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
           </tbody>
           <tbody>
             <tr><th colspan="2">Passed on at cost, with receipts</th></tr>
-            <tr><td>Home Affairs application fee, 2 people</td><td class="ph">R [amount]</td></tr>
+            <tr><td><span class="nowrap">Home Affairs</span> application fee, 2 people</td><td class="ph">R [amount]</td></tr>
             <tr><td>VFS service fee, 2 people</td><td class="ph">R [amount]</td></tr>
           </tbody>
           <tfoot><tr><td>Total</td><td class="ph">R [total]</td></tr></tfoot>
@@ -604,7 +609,7 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
   <div class="wrap">
     <div class="sec-head"><h2>Questions people ask before they book.</h2></div>
     <div>
-      <details><summary>Can you guarantee that my visa is approved?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>No one honestly can. The decision is Home Affairs'. What we can do is choose the right route, make the file complete and correct, and tell you plainly if we see a risk. Our fee does not depend on the outcome.</p></details>
+      <details><summary>Can you guarantee that my visa is approved?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>No one honestly can. The decision is <span class="nowrap">Home Affairs'</span>. What we can do is choose the right route, make the file complete and correct, and tell you plainly if we see a risk. Our fee does not depend on the outcome.</p></details>
       <details><summary>Can I apply without leaving South Africa?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Often, yes. About half of our applications are filed in-country, as extensions or changes of status. We check in the consultation whether your route allows it.</p></details>
       <details><summary>How long is a police clearance valid?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>You need one for every country you lived in for 12 months or more since turning 18, and they expire. We plan the order of your documents so none run out before the application is lodged.</p></details>
       <details><summary>What if I'm not happy with your service?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Write to [name, email]. You get an answer within 10 working days. If that doesn't resolve it, you can go to the Consumer Goods and Services Ombud.</p></details>
