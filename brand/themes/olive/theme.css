@@ -1,0 +1,16 @@
+/* fineway theme: olive (Dark Olive Green #606C38, Pine Tree #283618, Cornsilk #FEFAE0, Earth Yellow #DDA15E) */
+:root{
+  --ground:#FEFAE0;  --paper:#FFFDF3;
+  --ink:#283618;     --ink-2:#3E4A2B;  --ink-3:#4F5A39;
+  --dark-1:#283618;  /* header, hero, booking */
+  --dark-2:#606C38;  /* how it works */
+  --dark-3:#1D2811;  --dark-3-hover:#34451F;  /* fees, footer */
+  --accent:#DDA15E;  --accent-hover:#E6B67E;  --on-accent:#283618;
+  --soft:#F3E3C0;
+  --second:#566131;  --second-2:#A3AD7A;
+  --line:#E2DCB6;    --line-2:#F2EDCF;
+  --flag:#8E4310;
+  --quote-bg:#FFFDF3; --quote-line:#EFE6CC;
+  --od-strong:rgba(255,255,255,.94); --od-soft:rgba(255,255,255,.86); --od-faint:rgba(255,255,255,.55);
+  --logo-ink:#FEFAE0;
+}
