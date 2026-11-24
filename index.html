@@ -30,6 +30,7 @@
   --wrap:1200px;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -230,8 +231,9 @@ figcaption{font-size:14px;color:var(--ink-3);margin-top:10px}
 .team-photo{margin:36px 0 0}
 .team-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 45%;border-radius:20px}
 .embed{background:var(--ground);color:var(--ink);border-radius:26px;padding:30px}
-.embed-src{font-size:13px;color:var(--ink-3);margin-bottom:18px}
-fieldset{border:0;margin:0 0 22px;padding:0}
+.book-self{margin-top:28px;font-size:16px;color:var(--od-strong)}
+.book-self a{color:#fff;font-weight:600}
+fieldset{border:0;margin:0;padding:0;min-width:0}
 legend{font-weight:600;font-size:15px;margin-bottom:10px;padding:0}
 .seg{display:flex;flex-wrap:wrap;gap:8px}
 .seg label{position:relative}
@@ -239,15 +241,39 @@ legend{font-weight:600;font-size:15px;margin-bottom:10px;padding:0}
 .seg span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);font-size:15px;font-weight:500}
 .seg input:checked+span{background:var(--second);border-color:var(--second);color:#fff}
 .seg input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
-.days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.days span{flex-direction:column;justify-content:center;width:100%;min-height:62px;line-height:1.2;text-align:center}
-.days small{font-size:12px;font-weight:400;opacity:.8}
-.days label,.times label{display:block}
-.times{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.times span{justify-content:center;width:100%}
-.times label.off span{opacity:.4;text-decoration:line-through}
-.consent{font-size:13px;color:var(--ink-3);margin-top:16px}
-.consent a{color:var(--ink)}
+#enquiry{display:grid;gap:18px}
+.field{display:grid;gap:6px;min-width:0;align-content:start}
+.field[hidden]{display:none}
+.field>label{font-weight:600;font-size:15px}
+.opt-l{font-weight:400;color:var(--ink-3)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+#enquiry input[type=text],#enquiry input[type=email],#enquiry input[type=tel],#enquiry select,#enquiry textarea{width:100%;min-height:48px;padding:10px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);font:400 16px/1.4 var(--sans)}
+#enquiry select{appearance:none;padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23667' stroke-width='1.8'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+#enquiry textarea{resize:vertical;min-height:104px}
+#enquiry input:focus,#enquiry select:focus,#enquiry textarea:focus{outline:none;border-color:var(--second);box-shadow:0 0 0 3px color-mix(in srgb,var(--second) 25%,transparent)}
+.phone{display:grid;grid-template-columns:104px minmax(0,1fr);gap:8px}
+#enquiry #dial{padding-left:12px;padding-right:30px;background-position:right 11px center}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--flag)}
+.err{margin:0;font-size:14px;font-weight:500;color:var(--flag)}
+.err:empty{display:none}
+.hint{margin:-10px 0 0;font-size:14px;color:var(--ink-3)}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.45;cursor:pointer}
+.check input{flex:none;width:22px;height:22px;margin:1px 0 0;accent-color:var(--second)}
+.check a{color:var(--ink);font-weight:600}
+.field.invalid .check input{outline:2px solid var(--flag);outline-offset:2px}
+.hp{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.btn-send{width:100%}
+.btn-send[disabled]{opacity:.7;cursor:progress}
+.form-err{margin:0;font-size:15px;color:var(--flag);font-weight:500}
+.form-err:empty{display:none}
+.mock-note{margin:0;font-size:13px;padding:8px 12px;border-radius:10px;background:var(--soft);color:var(--ink)}
+.done{display:grid;gap:12px;justify-items:start;padding:12px 4px}
+.done[hidden]{display:none}
+.done:focus{outline:none}
+.done svg{color:var(--second)}
+.done h3{font-size:28px;line-height:1.2}
+.done p{color:var(--ink-2)}
+.done .btn{margin-top:8px}
 
 /* faq */
 .faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px}
@@ -302,8 +328,8 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
   .story-mark{font-size:80px}
   .team-grid{grid-template-columns:1fr 1fr}
   .trust-row,.foot{grid-template-columns:1fr}
-  .days{grid-template-columns:repeat(3,1fr)}
-  .times{grid-template-columns:repeat(2,1fr)}
+  .row2{grid-template-columns:1fr}
+  .embed{padding:24px 18px}
   .quote{padding:24px 20px}
   .track-l{font-size:10px}
 }
@@ -573,35 +599,116 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
   <div class="wrap">
     <div class="sec-head">
       <h2>Book a free consultation.</h2>
-      <p>Thirty minutes about your situation and the route that fits. You'll know what it takes before you pay anything.</p>
+      <p>Tell us a little about your situation. We reply within one working day to arrange your free consultation and the route that fits.</p>
       <ul class="book-list">
-        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Only times that are really free are shown</li>
-        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Confirmation and calendar invitation straight away</li>
-        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>A link to move or cancel, any time</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>A reply from a person within one working day</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>No fee until you accept a quotation</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Your details are used only for your enquiry, under POPIA</li>
       </ul>
+      <p class="book-self" id="bookSelf" hidden>Prefer to pick a time yourself? <a id="bookSelfLink" href="#">Book a consultation</a></p>
     </div>
-    <form class="embed" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Consultation booked';">
-      <p class="embed-src">Booking by EasyVisaFlow (embedded)</p>
-      <fieldset><legend>Who is this for?</legend>
-        <div class="seg"><label><input type="radio" name="who" checked><span>Me or my family</span></label><label><input type="radio" name="who"><span>My company's staff</span></label></div>
-      </fieldset>
-      <fieldset><legend>How would you like to talk?</legend>
-        <div class="seg"><label><input type="radio" name="how" checked><span>Video</span></label><label><input type="radio" name="how"><span>Phone</span></label><label><input type="radio" name="how"><span>At the office</span></label></div>
-      </fieldset>
-      <fieldset><legend>Day</legend>
-        <div class="seg days" id="days"></div>
-      </fieldset>
-      <fieldset><legend>Time (South African time)</legend>
-        <div class="seg times">
-          <label><input type="radio" name="t" checked><span>09:00</span></label>
-          <label class="off"><input type="radio" name="t" disabled><span>10:00</span></label>
-          <label><input type="radio" name="t"><span>11:30</span></label>
-          <label><input type="radio" name="t"><span>14:00</span></label>
+
+    <div class="embed" id="enquiryBox">
+      <form id="enquiry" novalidate>
+        <p class="mock-note" id="mockNote" hidden>Test mode: enquiries are checked but not sent to the team yet.</p>
+
+        <fieldset class="field">
+          <legend>Who is this for?</legend>
+          <div class="seg">
+            <label><input type="radio" name="enquirerType" value="private" checked><span>Me or my family</span></label>
+            <label><input type="radio" name="enquirerType" value="company"><span>My company's staff</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field" id="f-companyName" hidden>
+          <label for="companyName">Company name</label>
+          <input id="companyName" name="companyName" type="text" autocomplete="organization" maxlength="200">
+          <p class="err" id="e-companyName"></p>
         </div>
-      </fieldset>
-      <button class="btn btn-rose" type="submit" style="width:100%">Book this time</button>
-      <p class="consent">We use your details only to arrange and hold the consultation. <a href="#privacy">Privacy notice (POPIA)</a></p>
-    </form>
+
+        <div class="field" id="f-fullName">
+          <label for="fullName">Full name</label>
+          <input id="fullName" name="fullName" type="text" autocomplete="name" maxlength="200" required>
+          <p class="err" id="e-fullName"></p>
+        </div>
+
+        <div class="row2">
+          <div class="field" id="f-email">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="320">
+            <p class="err" id="e-email"></p>
+          </div>
+          <div class="field" id="f-phone">
+            <label for="phoneNumber">Phone</label>
+            <div class="phone">
+              <select id="dial" name="dial" aria-label="Country code" autocomplete="tel-country-code"></select>
+              <input id="phoneNumber" name="phoneNumber" type="tel" autocomplete="tel-national" inputmode="tel" maxlength="20">
+            </div>
+            <p class="err" id="e-phone"></p>
+          </div>
+        </div>
+        <p class="hint">Email or phone is enough. Both help us reach you faster.</p>
+
+        <div class="row2">
+          <div class="field" id="f-purpose">
+            <label for="purpose">What do you need?</label>
+            <select id="purpose" name="purpose">
+              <option value="">Choose one</option>
+              <option value="retire">Retire in South Africa</option>
+              <option value="work">Work in South Africa</option>
+              <option value="join_family">Join a partner or family</option>
+              <option value="visit">Visit, or extend a visitor's visa</option>
+              <option value="study">Study</option>
+              <option value="remote_work">Work remotely from South Africa</option>
+              <option value="business">Business visa</option>
+              <option value="pr">Permanent residence</option>
+              <option value="other">Something else, or not sure</option>
+            </select>
+            <p class="err" id="e-purpose"></p>
+          </div>
+          <div class="field" id="f-countryOfResidence">
+            <label for="countryOfResidence">Country you live in now</label>
+            <select id="countryOfResidence" name="countryOfResidence" autocomplete="country"><option value="">Choose a country</option></select>
+            <p class="err" id="e-countryOfResidence"></p>
+          </div>
+        </div>
+
+        <div class="field" id="f-message">
+          <label for="message">Your situation <span class="opt-l">(optional)</span></label>
+          <textarea id="message" name="message" rows="4" maxlength="4000" placeholder="For example: we are a retired couple in Germany and want to move to Cape Town next year."></textarea>
+          <p class="err" id="e-message"></p>
+        </div>
+
+        <div class="hp" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field" id="f-turnstile" hidden>
+          <div id="turnstile"></div>
+          <p class="err" id="e-turnstile"></p>
+        </div>
+
+        <div class="field" id="f-privacyConsent">
+          <label class="check">
+            <input id="privacyConsent" name="privacyConsent" type="checkbox">
+            <span>I have read the <a href="#privacy">privacy notice (POPIA)</a> and agree that fineway uses my details to reply to this enquiry.</span>
+          </label>
+          <p class="err" id="e-privacyConsent"></p>
+        </div>
+
+        <button class="btn btn-wine btn-send" type="submit" id="sendBtn">Send enquiry</button>
+        <p class="form-err" id="formErr" role="alert"></p>
+      </form>
+
+      <div class="done" id="enquiryDone" hidden tabindex="-1">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
+        <h3 id="doneTitle">Thank you. Your enquiry is with us.</h3>
+        <p>We reply within one working day, by email or phone.</p>
+        <p class="ref" id="doneRef" hidden>Your reference: <strong id="doneRefNo"></strong></p>
+        <a class="btn btn-wine" id="doneBook" href="#" hidden>Book a consultation time now</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -646,14 +753,6 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
 
 <script>
 (function(){
-  // booking days
-  const days=document.getElementById('days');
-  const names=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  let d=new Date(),n=0;
-  while(n<5){d.setDate(d.getDate()+1);const w=(d.getDay()+6)%7;if(w>4)continue;
-    const l=document.createElement('label');
-    l.innerHTML='<input type="radio" name="day"'+(n===0?' checked':'')+'><span>'+names[w]+'<small>'+d.getDate()+' '+d.toLocaleString('en',{month:'short'})+'</small></span>';
-    days.appendChild(l);n++;}
 
   // route finder
   const Q=[
@@ -691,6 +790,7 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
       else if(ans.who==='couple')pts.push("You can apply together on one application.");
       if(ans.when==='soon')pts.push("Tight timing: book soon so police clearances don't hold you up.");
       body.innerHTML='<div class="step result"><p class="result-label">Based on your answers</p><p class="result-route">'+r[0]+'</p><p>'+r[1]+'</p><ul>'+pts.map(p=>'<li>'+tick+'<span>'+p+'</span></li>').join('')+'</ul><a class="btn btn-wine" href="#book" style="width:100%">Book a free consultation about this</a></div>';
+      document.dispatchEvent(new CustomEvent('fw:finder',{detail:Object.assign({},ans)}));
     }
     if(focus){const f=body.querySelector('.opt,.btn');f&&f.focus({preventScroll:true});}
   }
@@ -707,6 +807,150 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
   if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){s.setCurrentTime(3.6);return;}
   function go(){setTimeout(function(){s.setCurrentTime(0);s.unpauseAnimations();},250);}
   if(document.readyState==='complete')go();else window.addEventListener('load',go);
+})();
+</script>
+<script>
+(function(){
+  // ---------------- enquiry form -> /api/enquiry -> EasyVisaFlow ----------------
+  var CONTACT_EMAIL='[email]';            // shown when sending fails; set the real address here
+  var API='/api/enquiry';
+  var DIAL={"AC":"247","AD":"376","AE":"971","AF":"93","AG":"1","AI":"1","AL":"355","AM":"374","AO":"244","AR":"54","AS":"1","AT":"43","AU":"61","AW":"297","AX":"358","AZ":"994","BA":"387","BB":"1","BD":"880","BE":"32","BF":"226","BG":"359","BH":"973","BI":"257","BJ":"229","BL":"590","BM":"1","BN":"673","BO":"591","BQ":"599","BR":"55","BS":"1","BT":"975","BW":"267","BY":"375","BZ":"501","CA":"1","CC":"61","CD":"243","CF":"236","CG":"242","CH":"41","CI":"225","CK":"682","CL":"56","CM":"237","CN":"86","CO":"57","CR":"506","CU":"53","CV":"238","CW":"599","CX":"61","CY":"357","CZ":"420","DE":"49","DJ":"253","DK":"45","DM":"1","DO":"1","DZ":"213","EC":"593","EE":"372","EG":"20","EH":"212","ER":"291","ES":"34","ET":"251","FI":"358","FJ":"679","FK":"500","FM":"691","FO":"298","FR":"33","GA":"241","GB":"44","GD":"1","GE":"995","GF":"594","GG":"44","GH":"233","GI":"350","GL":"299","GM":"220","GN":"224","GP":"590","GQ":"240","GR":"30","GT":"502","GU":"1","GW":"245","GY":"592","HK":"852","HN":"504","HR":"385","HT":"509","HU":"36","ID":"62","IE":"353","IL":"972","IM":"44","IN":"91","IO":"246","IQ":"964","IR":"98","IS":"354","IT":"39","JE":"44","JM":"1","JO":"962","JP":"81","KE":"254","KG":"996","KH":"855","KI":"686","KM":"269","KN":"1","KP":"850","KR":"82","KW":"965","KY":"1","KZ":"7","LA":"856","LB":"961","LC":"1","LI":"423","LK":"94","LR":"231","LS":"266","LT":"370","LU":"352","LV":"371","LY":"218","MA":"212","MC":"377","MD":"373","ME":"382","MF":"590","MG":"261","MH":"692","MK":"389","ML":"223","MM":"95","MN":"976","MO":"853","MP":"1","MQ":"596","MR":"222","MS":"1","MT":"356","MU":"230","MV":"960","MW":"265","MX":"52","MY":"60","MZ":"258","NA":"264","NC":"687","NE":"227","NF":"672","NG":"234","NI":"505","NL":"31","NO":"47","NP":"977","NR":"674","NU":"683","NZ":"64","OM":"968","PA":"507","PE":"51","PF":"689","PG":"675","PH":"63","PK":"92","PL":"48","PM":"508","PR":"1","PS":"970","PT":"351","PW":"680","PY":"595","QA":"974","RE":"262","RO":"40","RS":"381","RU":"7","RW":"250","SA":"966","SB":"677","SC":"248","SD":"249","SE":"46","SG":"65","SH":"290","SI":"386","SJ":"47","SK":"421","SL":"232","SM":"378","SN":"221","SO":"252","SR":"597","SS":"211","ST":"239","SV":"503","SX":"1","SY":"963","SZ":"268","TA":"290","TC":"1","TD":"235","TG":"228","TH":"66","TJ":"992","TK":"690","TL":"670","TM":"993","TN":"216","TO":"676","TR":"90","TT":"1","TV":"688","TW":"886","TZ":"255","UA":"380","UG":"256","US":"1","UY":"598","UZ":"998","VA":"39","VC":"1","VE":"58","VG":"1","VI":"1","VN":"84","VU":"678","WF":"681","WS":"685","XK":"383","YE":"967","YT":"262","ZA":"27","ZM":"260","ZW":"263"};
+  var NOT_RESIDENCE={AC:1,TA:1,XK:1};    // not ISO-3166 alpha-2
+  var TOP=['ZA','DE','GB','CH','AT','NL'];
+  var KEEP_ZERO={IT:1,SM:1,VA:1};          // trunk 0 is part of the number
+
+  var f=document.getElementById('enquiry'); if(!f)return;
+  var $=function(id){return document.getElementById(id)};
+  var dial=$('dial'), res=$('countryOfResidence'), btn=$('sendBtn'), formErr=$('formErr');
+  var names; try{names=new Intl.DisplayNames([document.documentElement.lang||'en'],{type:'region'})}catch(e){}
+  var nm=function(c){try{return (names&&names.of(c))||c}catch(e){return c}};
+  var codes=Object.keys(DIAL).sort(function(a,b){return nm(a).localeCompare(nm(b))});
+
+  // country of residence
+  function opt(v,t){var o=document.createElement('option');o.value=v;o.textContent=t;return o}
+  TOP.forEach(function(c){res.appendChild(opt(c,nm(c)))});
+  var sep=opt('','──────────');sep.disabled=true;res.appendChild(sep);
+  codes.forEach(function(c){if(!NOT_RESIDENCE[c])res.appendChild(opt(c,nm(c)))});
+  // dialling codes
+  TOP.forEach(function(c){var o=opt(c,nm(c)+' +'+DIAL[c]);o.label=c+' +'+DIAL[c];dial.appendChild(o)});
+  var sep2=opt('','──────────');sep2.disabled=true;dial.appendChild(sep2);
+  codes.forEach(function(c){var o=opt(c,nm(c)+' +'+DIAL[c]);o.label=c+' +'+DIAL[c];dial.appendChild(o)});
+  function setDial(c){for(var i=0;i<dial.options.length;i++){if(dial.options[i].value===c){dial.selectedIndex=i;return}}}
+  var guess=((navigator.language||'').split('-')[1]||'').toUpperCase();
+  setDial(DIAL[guess]?guess:'ZA');
+  var dialTouched=false;
+  dial.addEventListener('change',function(){dialTouched=true});
+  res.addEventListener('change',function(){if(!dialTouched&&DIAL[res.value])setDial(res.value)});
+
+  // private / company
+  function syncType(){$('f-companyName').hidden=f.enquirerType.value!=='company'}
+  f.querySelectorAll('input[name=enquirerType]').forEach(function(r){r.addEventListener('change',syncType)});
+
+  // answers from "Which visa fits me?"
+  document.addEventListener('fw:finder',function(e){
+    var a=e.detail||{}, map={retire:'retire',work:'work',family:'join_family',study:'study',company:'work'};
+    if(!f.purpose.value&&map[a.why])f.purpose.value=map[a.why];
+    if(a.why==='company'||a.who==='staff'){f.querySelector('input[value=company]').checked=true;syncType()}
+    if(!res.value&&a.where==='sa'){res.value='ZA';if(!dialTouched)setDial('ZA')}
+  });
+
+  // config: Turnstile, booking link, test mode
+  var ts=null, tsId=null, bookingUrl=null;
+  fetch(API,{headers:{Accept:'application/json'}}).then(function(r){return r.json()}).then(function(c){
+    if(c.mock)$('mockNote').hidden=false;
+    if(c.bookingUrl){bookingUrl=c.bookingUrl;$('bookSelfLink').href=c.bookingUrl;$('bookSelf').hidden=false;$('doneBook').href=c.bookingUrl}
+    if(c.turnstileSiteKey){
+      $('f-turnstile').hidden=false;
+      window.fwTsReady=function(){ts=window.turnstile;tsId=ts.render('#turnstile',{sitekey:c.turnstileSiteKey,theme:'light',size:'flexible',callback:function(){clearErr('turnstile')}})};
+      var sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=fwTsReady';sc.async=true;sc.defer=true;document.head.appendChild(sc);
+    }
+  }).catch(function(){});
+
+  // errors
+  var FIELD_FOR={fullName:'fullName',email:'email',phone:'phoneNumber',companyName:'companyName',purpose:'purpose',countryOfResidence:'countryOfResidence',message:'message',privacyConsent:'privacyConsent',turnstile:null};
+  function clearErr(k){var w=$('f-'+k),e=$('e-'+k);if(w)w.classList.remove('invalid');if(e)e.textContent='';var i=FIELD_FOR[k]&&$(FIELD_FOR[k]);if(i){i.removeAttribute('aria-invalid')}}
+  function setErr(k,msg){var w=$('f-'+k),e=$('e-'+k);if(!w||!e){formErr.textContent=msg;return null}
+    w.classList.add('invalid');e.textContent=msg;var i=FIELD_FOR[k]&&$(FIELD_FOR[k]);if(i){i.setAttribute('aria-invalid','true');i.setAttribute('aria-describedby','e-'+k)}return i||w}
+  Object.keys(FIELD_FOR).forEach(function(k){var i=FIELD_FOR[k]&&$(FIELD_FOR[k]);if(i)i.addEventListener('input',function(){clearErr(k)})});
+  $('dial').addEventListener('change',function(){clearErr('phone')});
+
+  function phoneE164(){
+    var raw=f.phoneNumber.value.trim(); if(!raw)return '';
+    if(raw.charAt(0)==='+')return '+'+raw.replace(/\D/g,'');
+    if(raw.slice(0,2)==='00')return '+'+raw.replace(/\D/g,'').slice(2);
+    var d=raw.replace(/\D/g,''), c=dial.value;
+    if(d.charAt(0)==='0'&&!KEEP_ZERO[c])d=d.slice(1);
+    return '+'+DIAL[c]+d;
+  }
+  function uuid(){if(window.crypto&&crypto.randomUUID)return crypto.randomUUID();
+    var b=new Uint8Array(16);crypto.getRandomValues(b);b[6]=(b[6]&15)|64;b[8]=(b[8]&63)|128;
+    var h=Array.prototype.map.call(b,function(x){return (x+256).toString(16).slice(1)}).join('');
+    return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20)}
+  function utm(){var q=new URLSearchParams(location.search),o={},any=false;
+    ['source','medium','campaign','term','content'].forEach(function(k){var v=q.get('utm_'+k);if(v){o[k]=v;any=true}});
+    try{if(any)sessionStorage.setItem('fw_utm',JSON.stringify(o));else{var s=sessionStorage.getItem('fw_utm');if(s)return JSON.parse(s)}}catch(e){}
+    return any?o:undefined}
+  utm();
+
+  function check(d){
+    var errs=[];
+    if(!d.fullName)errs.push(['fullName','Please enter your name.']);
+    if(d.enquirerType==='company'&&!d.companyName)errs.push(['companyName','Please enter the company name.']);
+    if(!d.email&&!d.phone)errs.push(['email','Please give an email address or a phone number.']);
+    if(d.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email))errs.push(['email','This email address looks incomplete.']);
+    if(d.phone&&!/^\+[1-9]\d{6,14}$/.test(d.phone))errs.push(['phone','Please check the phone number and country code.']);
+    if(!d.privacyConsent)errs.push(['privacyConsent','Please confirm you have read the privacy notice.']);
+    if(ts&&tsId!==null&&!d.turnstileToken)errs.push(['turnstile','Please complete the check above the button.']);
+    return errs;
+  }
+
+  var busy=false;
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault(); if(busy)return;
+    formErr.textContent='';
+    Object.keys(FIELD_FOR).forEach(clearErr);
+    var d={
+      fullName:f.fullName.value.trim(),
+      email:f.email.value.trim(),
+      phone:phoneE164(),
+      enquirerType:f.enquirerType.value,
+      companyName:f.enquirerType.value==='company'?f.companyName.value.trim():undefined,
+      purpose:f.purpose.value||undefined,
+      countryOfResidence:res.value||undefined,
+      preferredLanguage:(document.documentElement.lang||'en').slice(0,2),
+      message:f.message.value.trim()||undefined,
+      privacyConsent:f.privacyConsent.checked,
+      pageUrl:location.href,
+      utm:utm(),
+      website:f.website.value,
+      turnstileToken:ts&&tsId!==null?ts.getResponse(tsId):undefined,
+      idempotencyKey:uuid()
+    };
+    var errs=check(d);
+    if(errs.length){var first=null;errs.forEach(function(x){var el=setErr(x[0],x[1]);first=first||el});if(first&&first.focus)first.focus();return}
+
+    busy=true;btn.disabled=true;btn.textContent='Sending…';
+    var ctl=window.AbortController?new AbortController():null, timer=setTimeout(function(){ctl&&ctl.abort()},25000);
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),signal:ctl?ctl.signal:undefined})
+      .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {s:r.status,j:j}})})
+      .then(function(x){
+        if(x.s===201&&x.j.ok){
+          var first=d.fullName.split(/\s+/)[0];
+          $('doneTitle').textContent='Thank you'+(first?', '+first:'')+'. Your enquiry is with us.';
+          if(x.j.reference){$('doneRefNo').textContent=x.j.reference;$('doneRef').hidden=false}
+          if(bookingUrl)$('doneBook').hidden=false;
+          f.hidden=true;$('enquiryDone').hidden=false;$('enquiryDone').focus();
+          return;
+        }
+        if(x.s===400&&x.j.field){var el=setErr(x.j.field,x.j.error||'Please check this field.');if(el&&el.focus)el.focus()}
+        else if(x.s===400){formErr.textContent=x.j.error||'Please check your details and try again.'}
+        else if(x.s===429){formErr.textContent='Too many requests just now. Please email us at '+CONTACT_EMAIL+' instead.'}
+        else{formErr.textContent="Your enquiry couldn't be sent. Please try again in a few minutes, or email us at "+CONTACT_EMAIL+'.'}
+        if(ts&&tsId!==null)ts.reset(tsId);
+      })
+      .catch(function(){formErr.textContent="Your enquiry couldn't be sent. Please try again in a few minutes, or email us at "+CONTACT_EMAIL+'.';if(ts&&tsId!==null)ts.reset(tsId)})
+      .then(function(){clearTimeout(timer);busy=false;btn.disabled=false;btn.textContent='Send enquiry'});
+  });
 })();
 </script>
 </body>
