@@ -938,7 +938,8 @@ footer{background:var(--dark-3);color:var(--od-strong);padding:72px 0 40px;font-
           var first=d.fullName.split(/\s+/)[0];
           $('doneTitle').textContent='Thank you'+(first?', '+first:'')+'. Your enquiry is with us.';
           if(x.j.reference){$('doneRefNo').textContent=x.j.reference;$('doneRef').hidden=false}
-          if(bookingUrl)$('doneBook').hidden=false;
+          var bu=x.j.bookingUrl||bookingUrl;   // EVF's link for this lead, else the configured booking page
+          if(bu){$('doneBook').href=bu;$('doneBook').hidden=false}
           f.hidden=true;$('enquiryDone').hidden=false;$('enquiryDone').focus();
           return;
         }

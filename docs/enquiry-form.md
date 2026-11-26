@@ -35,7 +35,7 @@ Set them for the environment that serves the page (Preview for branch
 
 | EVF answer | Visitor sees |
 |---|---|
-| 201 | Form replaced by the confirmation, with the reference |
+| 201 | Form replaced by the confirmation, with the reference. "Book a consultation time now" uses `bookingUrl` from EVF's answer (https on easyvisaflow.com only), else `EVF_BOOKING_URL`, else no button |
 | 400 + field | Message under that field |
 | 401 / 403 | Generic error + email (key problem logged) |
 | 429 | "Too many requests, please email us" |

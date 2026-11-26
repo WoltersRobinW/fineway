@@ -93,6 +93,16 @@ function validate(input, ctx) {
   return { lead };
 }
 
+// Booking link from EVF's answer: only https links on easyvisaflow.com are passed to the browser.
+function safeBookingUrl(v) {
+  if (typeof v !== 'string' || v.length > 500) return null;
+  try {
+    const u = new URL(v);
+    const okHost = u.hostname === 'easyvisaflow.com' || u.hostname.endsWith('.easyvisaflow.com');
+    return u.protocol === 'https:' && okHost ? u.href : null;
+  } catch (_) { return null; }
+}
+
 async function verifyTurnstile(token, ip) {
   const body = new URLSearchParams({ secret: env('TURNSTILE_SECRET_KEY'), response: token || '' });
   if (ip) body.set('remoteip', ip);
@@ -194,7 +204,9 @@ module.exports = async function handler(req, res) {
   }
 
   const { status, body } = result;
-  if (status === 201 || status === 200) return send(res, 201, { ok: true, reference: body.reference || null });
+  if (status === 201 || status === 200) {
+    return send(res, 201, { ok: true, reference: body.reference || null, bookingUrl: safeBookingUrl(body.bookingUrl) });
+  }
   if (status === 400) return send(res, 400, { ok: false, field: body.field || null, error: body.error || 'Please check your details.' });
   if (status === 429) return send(res, 429, { ok: false, error: 'rate_limited' });
   if (status === 401 || status === 403) console.error(`[enquiry] EVF rejected the key (${status}). Check EVF_LEADS_KEY.`);
